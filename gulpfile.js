@@ -107,6 +107,13 @@ gulp.task( 'copy' , [ 'requirejs' ] , copy );
 
 // 第三步：将 DIST 文件夹下的文件打上 md5 签名并输出到 CDN 文件夹
 gulp.task( 'default' , [ 'js' , 'css' , 'html' , 'copy']);
+//开发任务
+gulp.task('watch', function () {
+    gulp.watch('app/less/*.less', ['less']);
+});
+gulp.task('debug', function () {
+    gulp.run('less', 'watch');
+});
 
 function clean() {
     return deleteFile( [ DIST , REQUIREJS , CDN ] );
